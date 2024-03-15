@@ -1,0 +1,41 @@
+<!-- Project 根標籤 : 對當前工程進行配置 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <!-- ModelVersion 標籤 : 當前 pom.xml 所採用的標籤結構 -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- 座標訊息 -->
+  <!-- groupId 標籤 : 代表公司或組織 (項目) -->
+  <groupId>com.maventest</groupId>
+  <!-- artifactId 標籤 : 座標向量之一，代表項目下某個模塊 -->
+  <artifactId>core</artifactId>
+  <!-- packaging 標:打包方式 -->
+  <!-- 取值 jar : 生成 jar 檔， 說明這是一個Java 工程 -->
+  <!-- 取值 war : 生成 war 檔， 說明這是一個web 工程 -->
+  <!-- 取值 pom : 說明這個工程是用來管理其他工程的工程 -->
+  <packaging>jar</packaging>
+  <!-- version 標籤 : 座標向量之一，代表當前模塊的版本 -->
+  <version>1.0</version>
+
+  <name>core</name>
+  <url>http://maven.apache.org</url>
+
+   <!-- 在 Maven 中定義屬性值 -->
+   <properties>
+        <!-- 構建過程中讀取原碼時使用的字符集 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <!-- dependencies 標籤 : 配置具體依賴信息 -->
+  <dependencies>
+    <!-- dependency 標籤 : 配置一個具體的依賴信息 -->
+    <dependency>
+      <!-- 具體依賴的座標信息 -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <!-- scope 標籤 : 配置當前依賴的範圍 -->
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
