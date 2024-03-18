@@ -6,6 +6,7 @@
 
   <!-- 座標訊息 -->
   <!-- groupId 標籤 : 代表公司或組織 (項目) -->
+  <!-- 安裝後在本地倉庫對應路徑 :  -->
   <groupId>com.maventest</groupId>
   <!-- artifactId 標籤 : 座標向量之一，代表項目下某個模塊 -->
   <artifactId>core</artifactId>

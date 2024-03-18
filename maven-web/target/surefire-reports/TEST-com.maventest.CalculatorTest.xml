@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.maventest.CalculatorTest" time="0.029" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.maventest.CalculatorTest" time="0.026" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="MS950"/>
-    <property name="java.class.path" value="d:\Maven\core\target\test-classes;d:\Maven\core\target\classes;d:\mvnrepo\junit\junit\4.12\junit-4.12.jar;d:\mvnrepo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.class.path" value="D:\Maven\maven-web\target\test-classes;D:\Maven\maven-web\target\classes;d:\mvnrepo\junit\junit\4.11\junit-4.11.jar;d:\mvnrepo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;d:\mvnrepo\javax\servlet\javax.servlet-api\3.1.0\javax.servlet-api-3.1.0.jar;d:\mvnrepo\com\maventest\core\1.0\core-1.0.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="TW"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\vincent_jian\AppData\Local\Temp\surefire2935108104711207186\surefirebooter-20240318084918255_3.jar C:\Users\vincent_jian\AppData\Local\Temp\surefire2935108104711207186 2024-03-18T08-49-18_155-jvmRun1 surefire-20240318084918255_1tmp surefire_0-20240318084918255_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\VINCEN~1\AppData\Local\Temp\surefire5256985184077688206\surefirebooter17575723739314525596.jar C:\Users\vincent_jian\AppData\Local\Temp\surefire5256985184077688206 2024-03-18T16-33-24_387-jvmRun1 surefire5794456229774922142tmp surefire_011027473701190458749tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="d:\Maven\core\target\test-classes;d:\Maven\core\target\classes;d:\mvnrepo\junit\junit\4.12\junit-4.12.jar;d:\mvnrepo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="surefire.test.class.path" value="D:\Maven\maven-web\target\test-classes;D:\Maven\maven-web\target\classes;d:\mvnrepo\junit\junit\4.11\junit-4.11.jar;d:\mvnrepo\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;d:\mvnrepo\javax\servlet\javax.servlet-api\3.1.0\javax.servlet-api-3.1.0.jar;d:\mvnrepo\com\maventest\core\1.0\core-1.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\vincent_jian"/>
     <property name="user.language" value="zh"/>
@@ -25,12 +25,12 @@
     <property name="java.version.date" value="2024-01-16"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="d:\Maven\core"/>
+    <property name="basedir" value="D:\Maven\maven-web"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\vincent_jian\AppData\Local\Temp\surefire2935108104711207186\surefirebooter-20240318084918255_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\VINCEN~1\AppData\Local\Temp\surefire5256985184077688206\surefirebooter17575723739314525596.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.10+11-LTS-240"/>
@@ -44,7 +44,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\VINCEN~1\AppData\Local\Temp\"/>
     <property name="java.version" value="17.0.10"/>
-    <property name="user.dir" value="d:\Maven\core"/>
+    <property name="user.dir" value="D:\Maven\maven-web"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>

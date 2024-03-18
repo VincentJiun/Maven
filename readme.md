@@ -274,6 +274,171 @@ mvn package
 - 存放目錄: target
 
 #### 6. 安裝操作
+- 安裝指令:
+    ```
+    mvn install
+    ```
+- 結果
+    ```
+    [INFO] Installing d:\Maven\core\pom.xml to d:\mvnrepo\com\maventest\core\1.0\core-1.0.pom
+    [INFO] Installing d:\Maven\core\target\core-1.0.jar to d:\mvnrepo\com\maventest\core\1.0\core-1.0.jar
+    ```
+- 安裝的效果是將本地建構過程中生成的jar包存入Maven本地倉庫。這個jar包在Maven倉庫中的路徑是根據他的座標生成的。
+- 座標信息:
+    ```
+    <groupId>com.maventest</groupId>
+    <artifactId>core</artifactId>
+    <version>1.0</version>
+    ```
+- 在Maven倉庫中生成的路徑:
+    ```
+    {倉庫路徑}\com\maventest\{artifactId}\{version}\{jar包}
+    ```
+- 另外，安裝操作還會將 pom.xml文件轉換為 xxx.pom文件一起存入本地倉庫。所以我們在Maven的本地倉庫中想看一個jar包原始的pom.xml文件時，查看對應的xxx.pom文件即可，他們是名字改變，本質是同一個文件。
+
+### 建構Maven版的web工程
+#### 1. 說明
+- 使用 mvn archetype:generate 命令生成web工程時，需使用一個專門的archetype。這個專門生成web工程骨架的archetype可以參照官網看到他的用法:
+- 參考網址:https://maven.apache.org/archetypes/maven-archetype-webapp/
 ```
-mvn install
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.4
+```
+#### 2. 操作
+- 注意:執行命令時，必須在工作空間目錄操作。
+- 後續操作按照提示執行:
+
+#### 3. 生成 pom.xml
+- 確認打包方式為 war
+```
+<packaging>war</packaging>
+```
+
+#### 4. 生成的web工程的目錄結構
+- webapp目錄下有 index.jsp
+- WEB-INF目錄下有 web.xml
+
+#### 5. 創建 Servlet
+1. 在main目錄下創建java目錄
+2. 在java目錄下創建Servlet類所在的包目錄
+3. 在包下創建 Servlet類
+```
+package com.cosen.maven;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import jaxa.io.IOException;
+
+
+public class Helloservlet extends HttpServlet{
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+    ServletException, IOException {
+        response.getWriter().write("Hello Maven Web")
+    }
+    
+}
+```
+4. 在web.xml中註冊 Servlet
+```
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>helloservlet</servlet-name>
+    <servlet-class>com.cosen.maven.Helloservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>helloservlet</servlet-name>
+    <url-pattern>/helloservlet</url-pattern>
+  </servlet-mapping>
+</web-app>
+```
+
+#### 6. 在index.jsp頁面編寫超連結
+```
+<html>
+<body>
+<h2>Hello World!</h2>
+<a href="helloServlet">Access Servlet</a>
+</body>
+</html>
+```
+-tip: jsp全稱 Jave Server Page, 和Thymeleaf一樣，是伺服器端頁面渲染技術，這裡不必關心 jsp語法細節，編寫一個超連結標籤即可。
+
+#### 7. 編譯
+此時直接執行 mvn compile
+
+#### 8. 配置對 servlet-api.jar 包的依賴
+- https://mvnrepository.com/
+
+#### 9. 將 Web 工程打包為 war包
+- 運行 mvn package 命令，生成war包的位置:
+    -> /target/{project}.war
+
+#### 10. 將war包部屬到 Tomcat 上運行
+1. 將 war包複製到 Tomcat/webapp 目錄下
+2. 啟動 Tomcat
+    - cmd
+    ```
+    cd Tomcat/bin
+    startup.bat
+    ```
+
+### 讓Web工程依賴Java工程
+#### 1. 觀念
+- 從來只有web工程依賴jave工程，沒有反過來java工程依賴Web工程，本質上來說，Web工程依賴的java工程其實就是Web工程裡導入的jar包，最終java工程會變成jar包，放在Web工程的WEB-INF/lib目錄下。
+
+#### 2. 操作
+在 maven-web 工程的 pom.xml中，在 dependencies標籤中配置:
+
+#### 3. 在Web工程中，編寫測試代碼
+1. 補充創建目錄
+    - \scr\test\java\com\cosen\maven
+
+2. 確認web工程依賴 junit
+```
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+</dependency>
+```
+
+3. 創建測試類
+將java工程的 CalculatorTest.java 類複製到 web 工程下\scr\test\java\com\cosen\maven 資料夾內
+
+#### 4. 執行 Maven 命令
+1. 測試命令
+```
+mvn test
+```
+- 說明:測試操作中會提前自動執行編譯操作，測試成功就說明編譯也是成功的。
+
+2. 打包命令
+```
+mvn package
+```
+- 通過查看 war包內的結構，我們看到被web工程依賴的java工程卻是會變成web工程的 WEBINF/lib 目錄下的jar 包
+
+3. 查看當前web 工程所依賴的jar包列表
+列表顯示:
+```
+mvn dependency:list
+```
+執行命令後:
+```
+[INFO] The following files have been resolved:
+[INFO]    junit:junit:jar:4.11:test -- module junit (auto)
+[INFO]    org.hamcrest:hamcrest-core:jar:1.3:test -- module hamcrest.core (auto)
+[INFO]    javax.servlet:javax.servlet-api:jar:3.1.0:provided -- module javax.servlet.api (auto)
+[INFO]    com.maventest:core:jar:1.0:compile -- module core (auto)
+```
+樹狀圖顯示:
+```
+mvn dependency:tree
 ```
